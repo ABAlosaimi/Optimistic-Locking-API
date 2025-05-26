@@ -2,11 +2,13 @@ package com.opls.opls.Optimisticlocking;
 
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 import com.opls.opls.Exception.BadRequestException;
 import com.opls.opls.Optimisticlocking.Dto.CreateResourceReq;
 import com.opls.opls.Optimisticlocking.Dto.UpdateResourceReq;
 
-
+@Service
 public class OptimisticLockServiceImp  implements OptimisticlockService {
 
     private final ResourceRepository resourceRepository;
@@ -32,7 +34,7 @@ public class OptimisticLockServiceImp  implements OptimisticlockService {
 
     @Override
     public boolean updateResource(UpdateResourceReq resource) throws Exception , BadRequestException {
-        Optional<Resource> isResourceExists = resourceRepository.findByIdAndVersionAndMetadata(resource.getResourceId(), 
+        Optional<Resource> isResourceExists = resourceRepository.findByIdAndVersionAndResourceMetaData(resource.getResourceId(), 
                                                                                      resource.getVersion(),
                                                                                      resource.getResourceMetaData());
         if (isResourceExists.isEmpty()) {
