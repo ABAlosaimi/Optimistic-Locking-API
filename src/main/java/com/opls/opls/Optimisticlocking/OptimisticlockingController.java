@@ -16,6 +16,7 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/api/v1")
 public class OptimisticlockingController {
+    
     private final OptimisticlockService optimisticlockService;
 
     public OptimisticlockingController(OptimisticlockService optimisticlockService) {
