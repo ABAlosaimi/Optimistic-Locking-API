@@ -1,7 +1,8 @@
 package com.opls.opls.Optimisticlocking.Dto;
 
+import java.util.Map;
+
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
@@ -9,10 +10,5 @@ import lombok.Data;
 public class CreateResourceReq {
     @NotNull
     @NotBlank
-    private String resourceMetaData;
-
-    @NotEmpty
-    @NotNull
-    private Long resourceId;
-
+    private Map<String, String> resourceMetaData;
 }

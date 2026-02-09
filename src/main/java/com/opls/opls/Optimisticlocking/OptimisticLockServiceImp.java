@@ -18,18 +18,19 @@ public class OptimisticLockServiceImp  implements OptimisticlockService {
     }
 
     @Override
-    public int createResource(CreateResourceReq resource) throws BadRequestException{
+    public boolean createResource(CreateResourceReq resource) throws BadRequestException{
 
         Optional<Resource> existingResource = resourceRepository.findById(resource.getResourceId());
         if (existingResource.isPresent()) {
             throw new BadRequestException("Resource with ID " + resource.getResourceId() + " already exists.");
         }
+        
         Resource newResource = new Resource();
-        newResource.setResourceMetaData(resource.getResourceMetaData());
+        newResource.setMata(resource.getResourceMetaData());
         newResource.setId(resource.getResourceId());
-        newResource.setVersion(1);
+        newResource.setVersion(Long.valueOf("1"));
         resourceRepository.save(newResource);
-        return newResource.getVersion();
+        return true;
     }
 
     @Override

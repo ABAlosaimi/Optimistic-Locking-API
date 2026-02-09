@@ -5,7 +5,7 @@ import com.opls.opls.Optimisticlocking.Dto.UpdateResourceReq;
 
 
 public interface OptimisticlockService {
-    public int createResource(CreateResourceReq resource)throws Exception;
+    public boolean createResource(CreateResourceReq resource)throws Exception;
 
     public boolean updateResource(UpdateResourceReq resource) throws Exception;
  
