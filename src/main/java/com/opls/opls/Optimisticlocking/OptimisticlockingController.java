@@ -7,10 +7,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.opls.opls.Optimisticlocking.Dto.CreateResourceReq;
 import com.opls.opls.Optimisticlocking.Dto.UpdateResourceReq;
-
 import jakarta.validation.Valid;
 
 @RestController
@@ -25,10 +23,9 @@ public class OptimisticlockingController {
 
     @PostMapping("/resource")
     public ResponseEntity<Object> registerResource(@Valid @RequestBody CreateResourceReq resource)throws Exception {
-        int resourceId = optimisticlockService.createResource(resource);
-        String id = String.valueOf(resourceId);
+        Long resourceId = optimisticlockService.createResource(resource);
 
-        return ResponseEntity.status(201).header("resourceId",id).build();
+        return ResponseEntity.status(201).body("resourceId: " + resourceId);
     }
 
 

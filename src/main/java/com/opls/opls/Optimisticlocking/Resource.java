@@ -1,7 +1,6 @@
 package com.opls.opls.Optimisticlocking;
 
 import java.util.Date;
-import java.util.Map;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,7 +8,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Entity
@@ -23,14 +21,11 @@ public class Resource {
 
     @Column(name = "resource_id", nullable = false, unique = true, updatable = false)
     @NotNull
-    private Long resourceID; 
-     
-   // finding a way to store the meta data of the resource 
-    private Map<String,String> mata; 
+    private long resourceID; 
 
     @Column(name = "version", nullable = false, updatable = true)
     @NotNull
-    private Long version;
+    private long version;
 
     @Column(name = "last_Date_Update", nullable = false, updatable = true)
     @NotNull
